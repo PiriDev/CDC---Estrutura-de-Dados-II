@@ -1,0 +1,98 @@
+//Exercício part. 1
+//escreva um algoritmo que solicite a idade de N alunos ao usuário e ao final
+//apresente o maior e o menor dos valores informados, a soma e a média aritmética
+
+//Exercício part. 2.1
+//Tratar idades inválidas (o espectro deve atender de 1-120 anos)
+
+//Exercício part. 2.2
+//Solicitar tambemo genero e ao final apresentar:
+// 		2.2.1- Percentual de alunos por sexo (ex.: 86% Masculino e 14% Feminino)
+// 		2.2.2- Média de idade dos homens e média de idade das mulheres
+// 		2.2.3- Mulher mais nova/ mais velha (idem para homem)
+// ------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h> // Importando a biblioteca Standard input/output
+
+// VARIÁVEIS
+int vlrMaior, vlrMenor, Qntd, idade; // Ao criar variáves é proibido no nome delas, iniciar com número, ter caracter especial, não pode ter espaços, não pode ter mais de 245 caracteres e não pode ser o mesmo nome de um código
+float Soma;
+char Genero;
+
+// MÉTODO
+int main() // Método principal do programa
+{
+	int resposta;
+	int idadeValida = 0;
+	Genero = 'o';
+	Qntd = 0;
+	Soma = 0; //forçar, inicializando a variável
+	
+    printf("\n ----------------------------------------------------------------------------------");
+    printf("\n |                      =-=-=-= ESCOLA WILSON AMARAL =-=-=-=                      |");
+    printf("\n ----------------------------------------------------------------------------------");
+    printf("\n");
+
+	do
+	{
+		Qntd = Qntd + 1;
+    	
+        printf("\n - IDADE:");
+		printf("\n Informe a idade do %i. aluno: " , Qntd);
+		scanf("%i" , &idade);
+		
+		    // IDADES INVÁLIDAS
+    		if(idade >= 1 && idade <= 120)
+    		{
+    		 
+    		 		printf("\n - GENERO:");
+		printf("\n Informe o sexo do %i. aluno (M=Masculino ou F=Feminino): " , Qntd);
+    	scanf("%s" , &Genero);
+    	printf("\n ----------------------------------------------------------");   
+    		 
+    		 idadeValida = 1;
+    		
+    		//SOMA
+    		Soma = Soma + idade;
+    		
+    		//MAIOR E MENOR
+    		if(Qntd == 1)
+    		{
+    			vlrMenor = idade;
+    			vlrMaior = idade;
+    		}
+    		else if (vlrMaior < idade){	vlrMaior = idade; }
+    		else if (vlrMenor > idade){	vlrMenor = idade; }
+    		
+    		//GENERO
+    		
+    		printf("\n Deseja informar a proxima idade? (1=Sim ou 2=Nao): ");
+    		scanf("%i" , &resposta);
+    		
+    		}else 
+    		{
+    		    printf("\n -------------------------------------ERROR----------------------------------------");
+    		    printf("\n | Favor insira uma idade válida que esteja entre os valores de 1 ano a 120 anos! |");
+    		    printf("\n |                                                                                |");
+    		    
+    		}
+		
+	}while (resposta == 1);
+        if(idadeValida == 1)
+        {
+            printf("\n --------------------------------------------------------------------");
+			printf("\n | - SOMA: A soma das %i idades igual a %0.0f                         |" , Qntd, Soma);
+			printf("\n | - MEDIA: A media aritmetica das %i idades igual a %.2f          |" , Qntd, (Soma / Qntd));
+			printf("\n | - IDADE MENOR: O aluno com a idade MENOR tem %i anos            |" , vlrMenor);
+			printf("\n | - IDADE MAIOR: Ja o aluno com a idade MAIOR tem %i anos         |" , vlrMaior);
+			printf("\n -------------------------------------------------------------------");
+			
+        }else 
+        {
+            printf("\n |                           %i é uma idade inválida!                            |" , idade);
+            printf("\n ----------------------------------------------------------------------------------");
+        
+        }
+	
+	
+}
